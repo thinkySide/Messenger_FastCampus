@@ -17,6 +17,8 @@
 		07AEB5402B6B5E3700429B5B /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEB53F2B6B5E3700429B5B /* AuthenticationService.swift */; };
 		07AEB5442B6B60FF00429B5B /* LoginIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEB5432B6B60FF00429B5B /* LoginIntroView.swift */; };
 		07AEB5462B6B611100429B5B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEB5452B6B611100429B5B /* MainTabView.swift */; };
+		07AEB5482B6B63E700429B5B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEB5472B6B63E700429B5B /* LoginView.swift */; };
+		07AEB54A2B6B65A000429B5B /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEB5492B6B65A000429B5B /* LoginButtonStyle.swift */; };
 		723ABD872AFFF1B800C260F1 /* LMessengerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723ABD862AFFF1B800C260F1 /* LMessengerApp.swift */; };
 		723ABD892AFFF1B800C260F1 /* AuthenticatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723ABD882AFFF1B800C260F1 /* AuthenticatedView.swift */; };
 		723ABD8B2AFFF1B900C260F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 723ABD8A2AFFF1B900C260F1 /* Assets.xcassets */; };
@@ -56,6 +58,8 @@
 		07AEB53F2B6B5E3700429B5B /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		07AEB5432B6B60FF00429B5B /* LoginIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginIntroView.swift; sourceTree = "<group>"; };
 		07AEB5452B6B611100429B5B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		07AEB5472B6B63E700429B5B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		07AEB5492B6B65A000429B5B /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		723ABD832AFFF1B800C260F1 /* LMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		723ABD862AFFF1B800C260F1 /* LMessengerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMessengerApp.swift; sourceTree = "<group>"; };
 		723ABD882AFFF1B800C260F1 /* AuthenticatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedView.swift; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				07AEB5432B6B60FF00429B5B /* LoginIntroView.swift */,
+				07AEB5472B6B63E700429B5B /* LoginView.swift */,
+				07AEB5492B6B65A000429B5B /* LoginButtonStyle.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -374,7 +380,9 @@
 				723ABD892AFFF1B800C260F1 /* AuthenticatedView.swift in Sources */,
 				07AEB53C2B6B5C3300429B5B /* AppDelegate.swift in Sources */,
 				72E4BEFC2B00B871007A1060 /* Color+Extension.swift in Sources */,
+				07AEB54A2B6B65A000429B5B /* LoginButtonStyle.swift in Sources */,
 				723ABD872AFFF1B800C260F1 /* LMessengerApp.swift in Sources */,
+				07AEB5482B6B63E700429B5B /* LoginView.swift in Sources */,
 				07AEB5402B6B5E3700429B5B /* AuthenticationService.swift in Sources */,
 				07AEB5462B6B611100429B5B /* MainTabView.swift in Sources */,
 			);
