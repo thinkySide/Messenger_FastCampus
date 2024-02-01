@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AuthenticationServices
 
 struct LoginView: View {
     
@@ -35,12 +36,14 @@ struct LoginView: View {
             }
             .buttonStyle(LoginButtonStyle(textColor: .bkText, borderColor: .greyLight))
             
-            Button {
-                // TODO: - 애플 로그인
-            } label: {
-                Text("Apple로 로그인")
+            SignInWithAppleButton { request in
+                authViewModel.send(action: .appleLogin(request))
+            } onCompletion: { result in
+                authViewModel.send(action: .appleLoginCompletion(result))
             }
-            .buttonStyle(LoginButtonStyle(textColor: .bkText, borderColor: .greyLight))
+            .frame(height: 40)
+            .padding(.horizontal, 20)
+            .cornerRadius(5)
         }
         .navigationBarBackButtonHidden()
         .toolbar {
@@ -50,6 +53,11 @@ struct LoginView: View {
                 } label: {
                     Image(.back)
                 }
+            }
+        }
+        .overlay {
+            if authViewModel.isLoading {
+                ProgressView()
             }
         }
     }

@@ -10,6 +10,7 @@ import Combine
 import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
+import AuthenticationServices
 
 enum AuthenticationError: Error {
     case clientID
@@ -18,12 +19,25 @@ enum AuthenticationError: Error {
 }
 
 protocol AuthenticationServiceType {
+    func checkAuthenticationState() -> String?
     func signInWithGoogle() -> AnyPublisher<User, ServiceError>
+    func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) -> String
+    func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<User, ServiceError>
+    func logout() -> AnyPublisher<Void, ServiceError>
 }
 
 
 // MARK: - Authentication Service
 class AuthenticationService: AuthenticationServiceType {
+    
+    func checkAuthenticationState() -> String? {
+        if let user = Auth.auth().currentUser {
+            return user.uid
+        } else {
+            return nil
+        }
+    }
+    
     func signInWithGoogle() -> AnyPublisher<User, ServiceError> {
         
         /// Future는 아래 작업이 완료되면 결과값을 방출하고 끝내는 퍼블리셔
@@ -35,6 +49,38 @@ class AuthenticationService: AuthenticationServiceType {
                 case let .failure(error):
                     promise(.failure(.error(error)))
                 }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    /// 애플 로그인 요청
+    func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) -> String {
+        request.requestedScopes = [.fullName, .email]
+        let nonce = randomNonceString()
+        request.nonce = sha256(nonce)
+        return nonce
+    }
+    
+    func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<User, ServiceError> {
+        Future { [weak self] promise in
+            self?.handleSignInWithAppleCompletion(authorization, nonce: none) { result in
+                switch result {
+                case let .success(user):
+                    promise(.success(user))
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func logout() -> AnyPublisher<Void, ServiceError> {
+        Future { promise in
+            do {
+                try Auth.auth().signOut()
+                promise(.success(()))
+            } catch {
+                promise(.failure(.error(error)))
             }
         }.eraseToAnyPublisher()
     }
@@ -76,7 +122,10 @@ extension AuthenticationService {
     }
     
     /// 구글 인증
-    private func autenticateUserWithFirebase(credential: AuthCredential, completion: @escaping (Result<User, Error>) -> Void) {
+    private func autenticateUserWithFirebase(
+        credential: AuthCredential,
+        completion: @escaping (Result<User, Error>) -> Void
+    ) {
         Auth.auth().signIn(with: credential) { result, error in
             if let error {
                 completion(.failure(error))
@@ -99,11 +148,65 @@ extension AuthenticationService {
             completion(.success(user))
         }
     }
+    
+    
+    /// 애플 인증
+    private func handleSignInWithAppleCompletion(
+        _ authorization: ASAuthorization,
+        nonce: String,
+        completion: @escaping (Result<User, Error>) -> Void
+    ) {
+        guard let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential,
+              let appleIDToken = appleIDCredential.identityToken else {
+            completion(.failure(AuthenticationError.tokenError))
+            return
+        }
+        
+        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+            completion(.failure(AuthenticationError.tokenError))
+            return
+        }
+        
+        let credential = OAuthProvider.credential(
+            withProviderID: "apple.com",
+            idToken: idTokenString,
+            rawNonce: nonce
+        )
+        
+        self.autenticateUserWithFirebase(credential: credential) { result in
+            switch result {
+            case var .success(user):
+                user.name = [appleIDCredential.fullName?.givenName, appleIDCredential.fullName?.familyName]
+                    .compactMap { $0 }
+                    .joined(separator: " ")
+                completion(.success(user))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
 }
 
 // MARK: - Stub
 class StubAuthenticationService: AuthenticationServiceType {
+    
+    func checkAuthenticationState() -> String? {
+        return nil
+    }
+    
     func signInWithGoogle() -> AnyPublisher<User, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) -> String {
+        return ""
+    }
+    
+    func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<User, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func logout() -> AnyPublisher<Void, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }
