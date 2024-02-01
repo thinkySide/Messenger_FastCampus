@@ -1,12 +1,15 @@
 //
-//  ContentView.swift
+//  AuthenticatedView.swift
 //  LMessenger
 //
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct AuthenticatedView: View {
+    
+    @StateObject var authViewModel: AuthenticatedViewModel
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -18,8 +21,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    AuthenticatedView(authViewModel: .init())
 }

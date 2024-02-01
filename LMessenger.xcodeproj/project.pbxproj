@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07AEB52A2B6B55F700429B5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07AEB5292B6B55F700429B5B /* LaunchScreen.storyboard */; };
+		07AEB52E2B6B577D00429B5B /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEB52D2B6B577D00429B5B /* DIContainer.swift */; };
+		07AEB5312B6B57C800429B5B /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEB5302B6B57C800429B5B /* Services.swift */; };
+		07AEB5352B6B589A00429B5B /* AuthenticatedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEB5342B6B589A00429B5B /* AuthenticatedViewModel.swift */; };
 		723ABD872AFFF1B800C260F1 /* LMessengerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723ABD862AFFF1B800C260F1 /* LMessengerApp.swift */; };
-		723ABD892AFFF1B800C260F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723ABD882AFFF1B800C260F1 /* ContentView.swift */; };
+		723ABD892AFFF1B800C260F1 /* AuthenticatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723ABD882AFFF1B800C260F1 /* AuthenticatedView.swift */; };
 		723ABD8B2AFFF1B900C260F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 723ABD8A2AFFF1B900C260F1 /* Assets.xcassets */; };
 		723ABD8E2AFFF1B900C260F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 723ABD8D2AFFF1B900C260F1 /* Preview Assets.xcassets */; };
 		723ABD982AFFF1B900C260F1 /* LMessengerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723ABD972AFFF1B900C260F1 /* LMessengerTests.swift */; };
@@ -36,9 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07AEB5292B6B55F700429B5B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		07AEB52B2B6B564300429B5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		07AEB52D2B6B577D00429B5B /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		07AEB5302B6B57C800429B5B /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		07AEB5342B6B589A00429B5B /* AuthenticatedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedViewModel.swift; sourceTree = "<group>"; };
 		723ABD832AFFF1B800C260F1 /* LMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		723ABD862AFFF1B800C260F1 /* LMessengerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMessengerApp.swift; sourceTree = "<group>"; };
-		723ABD882AFFF1B800C260F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		723ABD882AFFF1B800C260F1 /* AuthenticatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedView.swift; sourceTree = "<group>"; };
 		723ABD8A2AFFF1B900C260F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		723ABD8D2AFFF1B900C260F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		723ABD932AFFF1B900C260F1 /* LMessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LMessengerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +84,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07AEB52C2B6B576700429B5B /* General */ = {
+			isa = PBXGroup;
+			children = (
+				07AEB52D2B6B577D00429B5B /* DIContainer.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		07AEB52F2B6B57B300429B5B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				07AEB5302B6B57C800429B5B /* Services.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		07AEB5322B6B586200429B5B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				07AEB5332B6B587000429B5B /* Authentication */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		07AEB5332B6B587000429B5B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				723ABD882AFFF1B800C260F1 /* AuthenticatedView.swift */,
+				07AEB5342B6B589A00429B5B /* AuthenticatedViewModel.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		723ABD7A2AFFF1B800C260F1 = {
 			isa = PBXGroup;
 			children = (
@@ -98,8 +140,11 @@
 		723ABD852AFFF1B800C260F1 /* LMessenger */ = {
 			isa = PBXGroup;
 			children = (
+				07AEB52B2B6B564300429B5B /* Info.plist */,
 				723ABD862AFFF1B800C260F1 /* LMessengerApp.swift */,
-				723ABD882AFFF1B800C260F1 /* ContentView.swift */,
+				07AEB52C2B6B576700429B5B /* General */,
+				07AEB52F2B6B57B300429B5B /* Service */,
+				07AEB5322B6B586200429B5B /* View */,
 				72E4BEFA2B00B871007A1060 /* Extension */,
 				723ABDB02AFFF1D800C260F1 /* Resource */,
 				723ABD8C2AFFF1B900C260F1 /* Preview Content */,
@@ -137,6 +182,7 @@
 			children = (
 				723ABD8A2AFFF1B900C260F1 /* Assets.xcassets */,
 				723ABDB12AFFF1F000C260F1 /* Colors.xcassets */,
+				07AEB5292B6B55F700429B5B /* LaunchScreen.storyboard */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -213,7 +259,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					723ABD822AFFF1B800C260F1 = {
 						CreatedOnToolsVersion = 14.3;
@@ -254,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				723ABDB22AFFF1F000C260F1 /* Colors.xcassets in Resources */,
+				07AEB52A2B6B55F700429B5B /* LaunchScreen.storyboard in Resources */,
 				723ABD8E2AFFF1B900C260F1 /* Preview Assets.xcassets in Resources */,
 				723ABD8B2AFFF1B900C260F1 /* Assets.xcassets in Resources */,
 			);
@@ -280,7 +327,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				723ABD892AFFF1B800C260F1 /* ContentView.swift in Sources */,
+				07AEB5352B6B589A00429B5B /* AuthenticatedViewModel.swift in Sources */,
+				07AEB5312B6B57C800429B5B /* Services.swift in Sources */,
+				07AEB52E2B6B577D00429B5B /* DIContainer.swift in Sources */,
+				723ABD892AFFF1B800C260F1 /* AuthenticatedView.swift in Sources */,
 				72E4BEFC2B00B871007A1060 /* Color+Extension.swift in Sources */,
 				723ABD872AFFF1B800C260F1 /* LMessengerApp.swift in Sources */,
 			);
@@ -355,6 +405,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -415,6 +466,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -444,11 +496,12 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LMessenger/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -473,11 +526,12 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LMessenger/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
