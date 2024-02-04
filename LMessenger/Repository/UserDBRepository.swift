@@ -13,6 +13,7 @@ protocol UserDBRepositoryType {
     func addUser(_ object: UserObject) -> AnyPublisher<Void, DBError>
     func getUser(userID: String) -> AnyPublisher<UserObject, DBError>
     func loadUser() -> AnyPublisher<[UserObject], DBError>
+    func addUserAfterContact(users: [UserObject]) -> AnyPublisher<Void, DBError>
 }
 
 class UserDBRepository: UserDBRepositoryType {
@@ -24,13 +25,13 @@ class UserDBRepository: UserDBRepositoryType {
         
         Just(object)
         
-            /// 1. 인코딩을 통해 데이터화 하고
+        /// 1. 인코딩을 통해 데이터화 하고
             .compactMap { try? JSONEncoder().encode($0) }
         
-            /// 2. 데이터를 Dictionary 화 하고
+        /// 2. 데이터를 Dictionary 화 하고
             .compactMap { try? JSONSerialization.jsonObject(with: $0, options: .fragmentsAllowed) }
         
-            /// 3. 실제 경로에 데이터 Set
+        /// 3. 실제 경로에 데이터 Set
             .flatMap { value in
                 Future<Void, Error> { [weak self] promise in
                     self?.db.child(DBKey.Users).child(object.id).setValue(value) { error, _ in
@@ -100,5 +101,37 @@ class UserDBRepository: UserDBRepositoryType {
             }
         }
         .eraseToAnyPublisher()
+    }
+    
+    func addUserAfterContact(users: [UserObject]) -> AnyPublisher<Void, DBError> {
+        Publishers.Zip(users.publisher, users.publisher)
+            .compactMap { origin, converted in
+                if let converted = try? JSONEncoder().encode(converted) {
+                    return (origin, converted)
+                } else {
+                    return nil
+                }
+            }
+            .compactMap { origin, converted in
+                if let converted = try? JSONSerialization.jsonObject(with: converted, options: .fragmentsAllowed) {
+                    return (origin, converted)
+                } else {
+                    return nil
+                }
+            }
+            .flatMap { origin, converted in
+                Future<Void, Error> { [weak self] promise in
+                    self?.db.child(DBKey.Users).child(origin.id).setValue(converted) { error, _ in
+                        if let error {
+                            promise(.failure(error))
+                        } else {
+                            promise(.success(()))
+                        }
+                    }
+                }
+            }
+            .last()
+            .mapError { .error($0) }
+            .eraseToAnyPublisher()
     }
 }

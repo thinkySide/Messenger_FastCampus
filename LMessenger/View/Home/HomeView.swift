@@ -156,7 +156,7 @@ struct HomeView: View {
             .padding(.bottom, 30)
             
             Button {
-                // 투두
+                viewModel.send(action: .requestContacts)
             } label: {
                 Text("친구추가")
                     .font(.system(size: 14))

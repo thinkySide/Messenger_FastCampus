@@ -24,6 +24,7 @@
 		079FCBE92B6F619000D39287 /* HomeModalDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FCBE82B6F619000D39287 /* HomeModalDestination.swift */; };
 		079FCBEC2B6F626400D39287 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FCBEB2B6F626400D39287 /* MyProfileView.swift */; };
 		079FCBEE2B6F626B00D39287 /* OtherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FCBED2B6F626B00D39287 /* OtherProfileView.swift */; };
+		079FCBF02B6F666D00D39287 /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FCBEF2B6F666D00D39287 /* ContactService.swift */; };
 		07AEB52A2B6B55F700429B5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07AEB5292B6B55F700429B5B /* LaunchScreen.storyboard */; };
 		07AEB52E2B6B577D00429B5B /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEB52D2B6B577D00429B5B /* DIContainer.swift */; };
 		07AEB5312B6B57C800429B5B /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEB5302B6B57C800429B5B /* Services.swift */; };
@@ -86,6 +87,7 @@
 		079FCBE82B6F619000D39287 /* HomeModalDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModalDestination.swift; sourceTree = "<group>"; };
 		079FCBEB2B6F626400D39287 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		079FCBED2B6F626B00D39287 /* OtherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileView.swift; sourceTree = "<group>"; };
+		079FCBEF2B6F666D00D39287 /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
 		07AEB5292B6B55F700429B5B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07AEB52B2B6B564300429B5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		07AEB52D2B6B577D00429B5B /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				07AEB53F2B6B5E3700429B5B /* AuthenticationService.swift */,
 				079FCBD62B6F440B00D39287 /* UserService.swift */,
 				07AEB5512B6B6B3200429B5B /* ServiceError.swift */,
+				079FCBEF2B6F666D00D39287 /* ContactService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				079FCBE72B6F5FD300D39287 /* ErrorView.swift in Sources */,
 				079FCBE52B6F5F7600D39287 /* LoadingView.swift in Sources */,
 				079FCBE02B6F5E5D00D39287 /* Phase.swift in Sources */,
+				079FCBF02B6F666D00D39287 /* ContactService.swift in Sources */,
 				079FCBA42B6CD07600D39287 /* HomeViewModel.swift in Sources */,
 				07AEB5442B6B60FF00429B5B /* LoginIntroView.swift in Sources */,
 				079FCBE32B6F5F4C00D39287 /* PlaceholderView.swift in Sources */,
@@ -711,6 +715,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LMessenger/Info.plist;
+				INFOPLIST_KEY_NSContactsUsageDescription = "친구 목록을 가져옵니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -742,6 +747,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LMessenger/Info.plist;
+				INFOPLIST_KEY_NSContactsUsageDescription = "친구 목록을 가져옵니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
